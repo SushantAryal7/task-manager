@@ -22,5 +22,5 @@ A simple and efficient **Task Manager App** built with the **MERN Stack (MongoDB
 
 🚧 *Live demo coming soon...*
 
-## 📂 Folder Structure
+
 
