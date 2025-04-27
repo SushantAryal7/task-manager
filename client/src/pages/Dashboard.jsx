@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
+const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
+// `${process.env.REACT_APP_API_URL}/api/tasks`
 const Dashboard = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState("");
@@ -23,7 +26,7 @@ const Dashboard = () => {
   const fetchTasks = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await axios.get("http://localhost:5000/api/tasks", {
+      const response = await axios.get(`${apiUrl}/api/tasks`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the request header
         },
@@ -41,7 +44,7 @@ const Dashboard = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.post(
-        "http://localhost:5000/api/tasks",
+        `${apiUrl}/api/tasks`,
         {
           title: taskName,
         },
@@ -69,7 +72,7 @@ const Dashboard = () => {
   const handleDeleteTask = async (taskId) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:5000/api/tasks/${taskId}`, {
+      await axios.delete(`${apiUrl}/api/tasks/${taskId}`, {
         headers: {
           Authorization: `Bearer ${token}`, // Include the token in the request header
         },
