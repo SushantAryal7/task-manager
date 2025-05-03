@@ -19,7 +19,8 @@ const Login = () => {
       });
 
       // Save the token or user data in localStorage/sessionStorage
-      localStorage.setItem("userName", response.data.name); // or use JWT token
+      localStorage.setItem("userName", email); // or use JWT token
+
       navigate("/"); // Redirect to Dashboard after successful login
     } catch (err) {
       alert("Login failed! Please check your credentials.");
